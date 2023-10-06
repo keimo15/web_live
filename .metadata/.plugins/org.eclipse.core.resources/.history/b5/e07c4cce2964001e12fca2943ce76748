@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+	<link href="style.css" rel="stylesheet" type="text/css" media="all" />
+	<title>邦ロックまとめサイト!!!_みんなの声</title>
+</head>
+<body>
+	<div class = "header">
+        <nav>
+            <h2 class="logo">邦ロックまとめサイト!!!</h2>
+            <ul>
+                <li><a href="home.html">HOME</a></li>
+                <li><a href="band.jsp">バンド</a></li>
+                <li><a href="live.jsp">ライブ</a></li>
+                <li><a href="place.jsp">会場</a></li>
+                <li><a href="review.jsp">みんなの声</a></li>
+            </ul>
+        </nav>
+    </div>
+    
+	<h2>　あなたの好きなバンドを紹介してください！</h2><br >
+	<form action="/LetsEnjoyLive/reviewForm" method="post">
+	　ニックネーム　<input type="text" name ="E_Name" /><br />
+	　　　バンド名　<input type="text" name ="E_Band" /><br />
+	　　おすすめ曲　<input type="text" name ="E_Song" /><br />
+	　　　コメント　<input type="text" name ="E_Text" /><br />
+	　<input type="submit" name="btn" value="投稿" />
+	</form><br />
+</body>
+</html>

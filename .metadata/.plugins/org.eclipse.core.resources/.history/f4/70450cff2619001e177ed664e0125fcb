@@ -1,0 +1,34 @@
+<!-- home.html -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>邦ロックまとめサイト!!!</title>
+    <meta name="keywords" content="邦ロック,ライブ,フェス" />
+    <meta name="description" content="邦ロックファン向けの情報をまとめています!!!" />
+    <link href="style.css" rel="stylesheet" type="text/css" media="all" />
+</head>
+
+<body>
+    <div class = "header">
+        <nav>
+            <h2 class="logo">邦ロックまとめサイト!!!</h2>
+            <ul>
+                <li><a href="home.html">HOME</a></li>
+                <li><a href="band.jsp">バンド</a></li>
+                <li><a href="live.jsp">ライブ</a></li>
+                <li><a href="fes.jsp">フェス</a></li>
+                <li><a href="place.jsp">会場</a></li>
+                <li><a href="review.jsp">みんなの声</a></li>
+            </ul>
+        </nav>
+    </div>
+    
+    <div class = "main">
+    	<p id="apeal"><strong>ライブに<br/>行こう</strong></p>
+    </div>
+</body>
+
+</html>

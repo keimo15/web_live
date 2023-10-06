@@ -1,0 +1,135 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import bean.BandBean;
+import bean.BandDTO;
+
+public class BandDAO extends DAO {
+	private Connection con = null;
+// 全件検索
+	public BandDTO select() {
+		Statement stmt = null;
+		ResultSet  Brs = null;
+		BandDTO bdto = new BandDTO();
+		String Bsql = "SELECT * FROM band"; 
+		try {
+			connect();
+			// ステートメントを作成
+			stmt = con.createStatement();
+			// SQLを実行
+			Brs = stmt.executeQuery(Bsql);
+			// 検索結果の処理
+			while(Brs.next()) {
+				BandBean bb = new BandBean();
+				bb.setBand(Brs.getString("Band"));
+				bb.setDebut(Brs.getInt("Debut"));
+				bb.setSong(Brs.getString("Song"));
+				bdto.add(bb);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if  (Brs != null)  Brs.close();
+				if (stmt != null) stmt.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		disconnect();
+		return bdto;
+	}
+	
+	public int insert(String I_Band, int I_Debut, String I_Song) {
+		String sql = "INSERT INTO band (Band, Debut, Song) VALUES ('" + I_Band + "', " + I_Debut + ", '" + I_Song + "')";
+		return executeSql(sql);
+	}
+	public int update(String U_Band, int U_Debut, String U_Song) {
+		String sql = "UPDATE band SET Band = '" + U_Band + "', Debut = " + U_Debut + ", Song = '" + U_Song + "' WHERE Band = '" + U_Band + "'";
+		return executeSql(sql);
+	}
+	public int delete(String D_Band) {
+		String sql = "DELETE FROM band WHERE Band = '" + D_Band + "'";
+		return executeSql(sql);
+	}
+	
+// バンド検索
+	public BandDTO search(String S_Band) {
+		Statement stmt = null;
+		ResultSet Brs = null;
+		ResultSet Mrs = null;
+		BandDTO bdto = new BandDTO();
+		String Bsql = "SELECT * FROM band WHERE Band LIKE '%" + S_Band + "%'";
+		String[] Memb = new String[10];
+		String[] Part = new String[10];
+		int num = 0;
+		try {
+			connect();
+			stmt = con.createStatement();
+			Brs = stmt.executeQuery(Bsql);
+			while(Brs.next()) {
+				BandBean bb = new BandBean();
+				bb.setBand(Brs.getString("Band"));
+				bb.setDebut(Brs.getInt("Debut"));
+				bb.setSong(Brs.getString("Song"));
+				String Band = Brs.getString("Band");
+				String Msql = "SELECT * FROM member WHERE Band = '" + Band + "'";
+				Mrs = stmt.executeQuery(Msql);
+				while(Mrs.next()) {
+					Memb[num] = Mrs.getString("Name");
+					Part[num] = Mrs.getString("Part");
+					num++;
+				}
+				bb.setMemb(Memb);
+				bb.setPart(Part);
+				bdto.add(bb);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (Mrs != null) Mrs.close();
+				if (Brs != null) Brs.close();
+				if (stmt != null) stmt.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		disconnect();
+		return bdto;
+	}
+	
+	public void disconnect() {
+		try {
+			if (con != null) con.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

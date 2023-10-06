@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+	<title>入力画面</title>
+</head>
+<body>
+	<h2>バンドの情報を更新します</h2>
+	<form action="/LetsEnjoyLive/editBand" method="post">
+	　バンド名　<input type="text" name ="E_Band" /><br />
+	デビュー年　<input type="text" name ="E_Debut" /><br />
+	　　代表曲　<input type="text" name ="E_Song" /><br />
+	<input type="submit" name="btn" value="追加" />
+	<input type="submit" name="btn" value="修正" />
+	<input type="submit" name="btn" value="削除" />
+	<input type="submit" name="btn" value="表示" />
+	</form><br />
+	
+	<h2>バンドメンバーの情報を更新します</h2>
+	<form action="/LetsEnjoyLive/editMemb" method="post">
+	　　　名前　<input type="text" name ="E_Name" /><br />
+	　バンド名　<input type="text" name ="E_Band" /><br />
+	担当パート　<input type="text" name ="E_Part" /><br />
+	<input type="submit" name="btn" value="追加" />
+	<input type="submit" name="btn" value="修正" />
+	<input type="submit" name="btn" value="削除" />
+	<input type="submit" name="btn" value="表示" />
+	</form><br />
+	
+	<h2>会場の情報を更新します</h2>
+	<form action="/LetsEnjoyLive/editPlace" method="post">
+	　　会場名　<input type="text" name ="E_Name" /><br />
+	　都道府県　<input type="text" name ="E_Area" /><br />
+	　収容人数　<input type="text" name ="E_Capa" /><br />
+	　最寄り駅　<input type="text" name ="E_Stat" /><br />
+	<input type="submit" name="btn" value="追加" />
+	<input type="submit" name="btn" value="修正" />
+	<input type="submit" name="btn" value="削除" />
+	<input type="submit" name="btn" value="表示" />
+	</form><br />
+	
+	<h2>ライブの情報を更新します</h2>
+	<form action="/LetsGotoLive/editLive" method="post">
+	イベント名　<input type="text" name ="E_Name" /><br />
+	　　出演者　<input type="text" name ="E_Band" /><br />
+	　　会場名　<input type="text" name ="E_Place"/><br />
+	　　　日付　<input type="date" name ="E_Date" /><br />
+	<input type="submit" name="btn" value="追加" />
+	<input type="submit" name="btn" value="修正" />
+	<input type="submit" name="btn" value="削除" />
+	<input type="submit" name="btn" value="表示" />
+	</form><br />
+</body>
+</html>

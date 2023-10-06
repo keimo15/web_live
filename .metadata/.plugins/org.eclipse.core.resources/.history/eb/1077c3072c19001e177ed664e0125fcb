@@ -1,0 +1,124 @@
+<%@page contentType="text/html;charset=utf-8" %>
+<%@ page import="bean.*" %>
+<jsp:useBean id="pdtoA" scope="request" class="bean.PlaceDTO" />
+<jsp:useBean id="pdtoN" scope="request" class="bean.PlaceDTO" />
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="style.css" rel="stylesheet" type="text/css" media="all" />
+    <title>邦ロックまとめサイト!!!_会場</title>
+    
+</head>
+
+<body>
+    <div class = "header">
+        <nav>
+            <h2 class="logo">邦ロックまとめサイト!!!</h2>
+            <ul>
+                <li><a href="home.html">HOME</a></li>
+                <li><a href="band.jsp">バンド</a></li>
+                <li><a href="live.jsp">ライブ</a></li>
+                <li><a href="place.jsp">会場</a></li>
+                <li><a href="review.jsp">みんなの声</a></li>
+            </ul>
+        </nav>
+    </div>
+    
+    <div class = "main">
+    	<div class = "search">
+    	<form action="/LetsGotoLive/showplace" method="post">
+        	<h3>都道府県：</h3>
+        	<select name="Area">
+        		<option value="" selected="selected">選択してください</option>
+        		<optgroup label="北海道・東北地方">
+        			<option value="北海道">北海道</option>
+        			<option value="青森">青森</option>
+        			<option value="岩手">岩手</option>
+        			<option value="宮城">宮城</option>
+        			<option value="秋田">秋田</option>
+        			<option value="山形">山形</option>
+        			<option value="福島">福島</option>
+        		</optgroup>
+        		<optgroup label="関東地方">
+        			<option value="茨城">茨城</option>
+        			<option value="栃木">栃木</option>
+        			<option value="群馬">群馬</option>
+        			<option value="埼玉">埼玉</option>
+        			<option value="千葉">千葉</option>
+        			<option value="東京">東京</option>
+        			<option value="神奈川">神奈川</option>
+        		</optgroup>
+        		<optgroup label="中部地方">
+        			<option value="新潟">新潟</option>
+        			<option value="富山">富山</option>
+        			<option value="石川">石川</option>
+        			<option value="福井">福井</option>
+        			<option value="山梨">山梨</option>
+        			<option value="長野">長野</option>
+        			<option value="岐阜">岐阜</option>
+        			<option value="静岡">静岡</option>
+        			<option value="愛知">愛知</option>
+        		</optgroup>
+        		<optgroup label="関西地方">
+        			<option value="滋賀">滋賀</option>
+        			<option value="京都">京都</option>
+        			<option value="大阪">大阪</option>
+        			<option value="兵庫">兵庫</option>
+        			<option value="奈良">奈良</option>
+        			<option value="和歌山">和歌山</option>
+        		</optgroup>
+        		<optgroup label="中国地方">
+        			<option value="鳥取">鳥取</option>
+        			<option value="島根">島根</option>
+        			<option value="岡山">岡山</option>
+        			<option value="広島">広島</option>
+        			<option value="山口">山口</option>
+        		</optgroup>
+        		<optgroup label="四国地方">
+        			<option value="徳島">徳島</option>
+        			<option value="香川">香川</option>
+        			<option value="愛媛">愛媛</option>
+        			<option value="高知">高知</option>
+        		</optgroup>
+        		<optgroup label="九州地方">
+        			<option value="福岡">福岡</option>
+        			<option value="佐賀">佐賀</option>
+        			<option value="長崎">長崎</option>
+        			<option value="熊本">熊本</option>
+        			<option value="大分">大分</option>
+        			<option value="宮崎">宮崎</option>
+        			<option value="鹿児島">鹿児島</option>
+        			<option value="沖縄">沖縄</option>
+        		</optgroup>
+        	</select>
+        	<input type="submit" value="検索" /><br />
+        </form>
+        
+        <form action="/LetsGotoLive/showplace" method="post">
+        	<h3>会場名　：</h3>
+        	<input type="submit" value="下記から選択してクリック" /><br />
+        <% for(int i=0; i<pdtoA.size(); i++) {
+			PlaceBean pb = pdtoA.get(i); %>
+			<input type="radio" name="Name" value="<%= pb.getName() %>">　<%= pb.getName() %><br />
+		<% } %>
+		</form>
+		
+		<%
+			if (pdtoN != null && pdtoN.size() > 0) {
+				PlaceBean pb = pdtoN.get(0);
+		%>
+		</div>
+			<h1 id = "Name"><%= pb.getName() %></h1>
+		<div class = "other">
+			<h3>地域　　:　<%= pb.getArea() %></h3>
+			<h3>収容人数:　<%= pb.getCapa() %>人</h3>
+			<h3>最寄り駅:　<%= pb.getStat() %></h3>
+		</div>
+		<%
+			}
+		%>
+    </div>
+</body>
+
+</html>

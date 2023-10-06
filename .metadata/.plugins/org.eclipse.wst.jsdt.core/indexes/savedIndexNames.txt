@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+C:\Users\keito\Documents\就活全般\邦ロックサイト\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1088395936.index
+1079186860.index
+3116206851.index
+3297632225.index
+93291657.index
+2935676411.index
+2274241638.index

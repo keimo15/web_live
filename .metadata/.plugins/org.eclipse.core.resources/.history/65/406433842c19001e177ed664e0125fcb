@@ -1,0 +1,29 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page import="bean.*" %>
+<jsp:useBean id="mdto" scope="request" class="bean.MembDTO" />
+<jsp:useBean id="msg"  scope="request" class="java.lang.String" />
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>表示画面</title>
+</head>
+<body>
+	<h2><%= msg %></h2>
+	<a href="/LetsGotoLive/edit/edit.html">戻る</a>
+	<table border="0">
+		<tr>
+		<th width="120">名前</th>
+		<th width="180">バンド</th>
+		<th width="60">パート</th>
+		</tr><br />
+	<% for(int i=0; i<mdto.size(); i++) {
+		MembBean mb = mdto.get(i); %>
+		<tr>
+		<td align="center"><%= mb.getName() %></td>
+		<td align="center"><%= mb.getBand() %></td>
+		<td align="center"><%= mb.getPart() %></td>
+		</tr>
+	<% } %>
+	</table><br/>
+</body>
+</html>

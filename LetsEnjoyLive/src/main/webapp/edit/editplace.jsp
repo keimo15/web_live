@@ -1,0 +1,31 @@
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page import="bean.*" %>
+<jsp:useBean id="pdto" scope="request" class="bean.PlaceDTO" />
+<jsp:useBean id="msg"  scope="request" class="java.lang.String" />
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>表示画面</title>
+</head>
+<body>
+	<h2><%= msg %></h2>
+	<a href="/LetsEnjoyLive/edit/edit.html">戻る</a>
+	<table border="0">
+		<tr>
+		<th width="180">会場名</th>
+		<th width="60">都道府県</th>
+		<th width="60">収容人数</th>
+		<th width="180">最寄り駅</th>
+		</tr><br />
+	<% for(int i=0; i<pdto.size(); i++) {
+		PlaceBean pb = pdto.get(i); %>
+		<tr>
+		<td align="center"><%= pb.getName() %></td>
+		<td align="center"><%= pb.getArea() %></td>
+		<td align="center"><%= pb.getCapa() %>人</td>
+		<td align="center"><%= pb.getStat() %></td>
+		</tr>
+	<% } %>
+	</table><br/>
+</body>
+</html>

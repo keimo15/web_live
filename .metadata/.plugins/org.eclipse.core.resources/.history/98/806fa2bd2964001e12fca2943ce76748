@@ -1,0 +1,43 @@
+<%@page contentType="text/html;charset=utf-8" %>
+<%@ page import="bean.*" %>
+<jsp:useBean id="rdto" scope="request" class="bean.ReviewDTO" />
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="style.css" rel="stylesheet" type="text/css" media="all" />
+	<title>邦ロックまとめサイト!!!_みんなの声</title>
+</head>
+<body>
+	<div class = "header">
+        <nav>
+            <h2 class="logo">邦ロックまとめサイト!!!</h2>
+            <ul>
+                <li><a href="home.html">HOME</a></li>
+                <li><a href="band.jsp">バンド</a></li>
+                <li><a href="live.jsp">ライブ</a></li>
+                <li><a href="place.jsp">会場</a></li>
+                <li><a href="review.jsp">みんなの声</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class = "search">
+    	<h2><a href="reviewForm.html">バンド紹介を投稿する</a></h2><br />
+    	<form action="/LetsEnjoyLive/showreview" method="post">
+    	<input type="text" name="Band" />
+    	<input type="submit" value="バンドで絞り込む" />
+    	<h4>"全部"と入力すると一覧表示できます</h4>
+    	</form>
+    </div>
+
+	<div class = "other">
+		<h3>＜新着順＞</h3>
+		<% for(int i=rdto.size()-1; i>=0; i--) {
+			ReviewBean rb = rdto.get(i); %>
+			<h2><%= rb.getName() %>さん</h2>
+			<h4>バンド　　　:　<%= rb.getBand() %></h4>
+			<h4>おすすめ曲　:　<%= rb.getSong() %></h4>
+			<h4>コメント　　:　<%= rb.getText() %></h4><br />
+		<% } %>
+	</div>
+</body>
+</html>
